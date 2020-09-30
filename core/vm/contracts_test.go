@@ -321,34 +321,17 @@ func loadJson(name string) ([]precompiledTest, error) {
 	if err != nil {
 		return nil, err
 	}
-	var jsonTests []precompiledTestFromJson
-	err = json.Unmarshal(data, &jsonTests)
-	if err != nil {
-		return nil, err
-	}
-	testcases := make([]precompiledTest, len(jsonTests))
-	for i := 0; i < len(jsonTests); i++ {
-		jsonTest := jsonTests[i]
-		testcases[i] = precompiledTest{input: jsonTest.Input, expected: jsonTest.Expected, name: jsonTest.Name, errorExpected: false, noBenchmark: jsonTest.NoBenchmark}
-	}
+	var testcases []precompiledTest
+	err = json.Unmarshal(data, &testcases)
 	return testcases, err
 }
 
 func loadJsonFail(name string) ([]precompiledFailureTest, error) {
-	data, err := ioutil.ReadFile(fmt.Sprintf("testdata/precompiles/%v.json", name))
+	data, err := ioutil.ReadFile(fmt.Sprintf("testdata/precompiles/fail-%v.json", name))
 	if err != nil {
 		return nil, err
 	}
-	var jsonTests []precompiledFailureTestFromJson
-	err = json.Unmarshal(data, &jsonTests)
-	if err != nil {
-		return nil, err
-	}
-	testcases := make([]precompiledFailureTest, len(jsonTests))
-	for i := 0; i < len(jsonTests); i++ {
-		jsonTest := jsonTests[i]
-		testcases[i] = precompiledFailureTest{input: jsonTest.Input, expectedError: errors.New(jsonTest.ExpectedError), name: jsonTest.Name}
-	}
+	var testcases []precompiledFailureTest
 	err = json.Unmarshal(data, &testcases)
 	return testcases, err
 }
