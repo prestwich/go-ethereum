@@ -19,6 +19,7 @@ package vm
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"testing"
@@ -33,6 +34,13 @@ type precompiledTest struct {
 	Gas             uint64
 	Name            string
 	NoBenchmark     bool // Benchmark primarily the worst-cases
+}
+
+type precompiledTestFromJson struct {
+	Input, Expected string
+	Name            string
+	NoBenchmark     bool // Benchmark primarily the worst-cases
+	ErrorExpected   bool
 }
 
 // precompiledFailureTest defines the input/error pairs for precompiled
@@ -313,17 +321,34 @@ func loadJson(name string) ([]precompiledTest, error) {
 	if err != nil {
 		return nil, err
 	}
-	var testcases []precompiledTest
-	err = json.Unmarshal(data, &testcases)
+	var jsonTests []precompiledTestFromJson
+	err = json.Unmarshal(data, &jsonTests)
+	if err != nil {
+		return nil, err
+	}
+	testcases := make([]precompiledTest, len(jsonTests))
+	for i := 0; i < len(jsonTests); i++ {
+		jsonTest := jsonTests[i]
+		testcases[i] = precompiledTest{input: jsonTest.Input, expected: jsonTest.Expected, name: jsonTest.Name, errorExpected: false, noBenchmark: jsonTest.NoBenchmark}
+	}
 	return testcases, err
 }
 
 func loadJsonFail(name string) ([]precompiledFailureTest, error) {
-	data, err := ioutil.ReadFile(fmt.Sprintf("testdata/precompiles/fail-%v.json", name))
+	data, err := ioutil.ReadFile(fmt.Sprintf("testdata/precompiles/%v.json", name))
 	if err != nil {
 		return nil, err
 	}
-	var testcases []precompiledFailureTest
+	var jsonTests []precompiledFailureTestFromJson
+	err = json.Unmarshal(data, &jsonTests)
+	if err != nil {
+		return nil, err
+	}
+	testcases := make([]precompiledFailureTest, len(jsonTests))
+	for i := 0; i < len(jsonTests); i++ {
+		jsonTest := jsonTests[i]
+		testcases[i] = precompiledFailureTest{input: jsonTest.Input, expectedError: errors.New(jsonTest.ExpectedError), name: jsonTest.Name}
+	}
 	err = json.Unmarshal(data, &testcases)
 	return testcases, err
 }
@@ -365,4 +390,68 @@ func BenchmarkPrecompiledBLS12381G2MultiExpWorstCase(b *testing.B) {
 		NoBenchmark: false,
 	}
 	benchmarkPrecompiled("0f", testcase, b)
+}
+
+
+func TestPrecompiledBLS12377G1Add(t *testing.T) {
+	testJson("bls12377G1Add_matter", "f3", t)
+	testJson("bls12377G1Add_zexe", "f3", t)
+}
+
+func TestPrecompiledBLS12377G1Mul(t *testing.T) {
+	testJson("bls12377G1Mul_matter", "f2", t)
+	testJson("bls12377G1Mul_zexe", "f2", t)
+}
+
+func TestPrecompiledBLS12377G1ZMultiExp(t *testing.T) {
+	testJson("bls12377G1MultiExp_matter", "f1", t)
+	testJson("bls12377G1MultiExp_zexe", "f1", t)
+}
+
+func TestPrecompiledBLS12377G2Add(t *testing.T) {
+	testJson("bls12377G2Add_matter", "f0", t)
+	testJson("bls12377G2Add_zexe", "f0", t)
+}
+
+func TestPrecompiledBLS12377G2Mul(t *testing.T) {
+	testJson("bls12377G2Mul_matter", "ef", t)
+	testJson("bls12377G2Mul_zexe", "ef", t)
+}
+
+func TestPrecompiledBLS12377G2MultiExp(t *testing.T) {
+	testJson("bls12377G2MultiExp_matter", "ee", t)
+	testJson("bls12377G2MultiExp_zexe", "ee", t)
+}
+
+func TestPrecompiledBLS12377Pairing(t *testing.T) {
+	testJson("bls12377Pairing_matter", "ed", t)
+	testJson("bls12377Pairing_zexe", "ed", t)
+}
+
+func TestPrecompiledBLS12377G1AddFail(t *testing.T) {
+	testJsonFail("fail-bls12377G1Add", "f3", t)
+}
+
+func TestPrecompiledBLS12377G1MulFail(t *testing.T) {
+	testJsonFail("fail-bls12377G1Mul", "f2", t)
+}
+
+func TestPrecompiledBLS12377G1MultiexpFail(t *testing.T) {
+	testJsonFail("fail-bls12377G1Multiexp", "f1", t)
+}
+
+func TestPrecompiledBLS12377G2AddFail(t *testing.T) {
+	testJsonFail("fail-bls12377G2Add", "f0", t)
+}
+
+func TestPrecompiledBLS12377G2MulFail(t *testing.T) {
+	testJsonFail("fail-bls12377G2Mul", "ef", t)
+}
+
+func TestPrecompiledBLS12377G2MultiexpFail(t *testing.T) {
+	testJsonFail("fail-bls12377G2Multiexp", "ee", t)
+}
+
+func TestPrecompiledBLS12377PairingFail(t *testing.T) {
+	testJsonFail("fail-bls12377Pairing", "ed", t)
 }
