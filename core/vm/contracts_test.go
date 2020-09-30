@@ -19,7 +19,6 @@ package vm
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"testing"

@@ -993,7 +993,7 @@ var (
 	errBLS12377G2PointSubgroup    = errors.New("g2 point is not on correct subgroup")
 )
 
-// bls12377G1Add implements EIP-2537 G1Add precompile.
+// bls12377G1Add implements EIP-2539 G1Add precompile.
 type bls12377G1Add struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
@@ -1002,7 +1002,7 @@ func (c *bls12377G1Add) RequiredGas(input []byte) uint64 {
 }
 
 func (c *bls12377G1Add) Run(input []byte) ([]byte, error) {
-	// Implements EIP-2537 G1Add precompile.
+	// Implements EIP-2539 G1Add precompile.
 	// > G1 addition call expects `256` bytes as an input that is interpreted as byte concatenation of two G1 points (`128` bytes each).
 	// > Output is an encoding of addition operation result - single G1 point (`128` bytes).
 	if len(input) != 256 {
@@ -1031,7 +1031,7 @@ func (c *bls12377G1Add) Run(input []byte) ([]byte, error) {
 	return g.EncodePoint(r), nil
 }
 
-// bls12377G1Mul implements EIP-2537 G1Mul precompile.
+// bls12377G1Mul implements EIP-2539 G1Mul precompile.
 type bls12377G1Mul struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
@@ -1040,7 +1040,7 @@ func (c *bls12377G1Mul) RequiredGas(input []byte) uint64 {
 }
 
 func (c *bls12377G1Mul) Run(input []byte) ([]byte, error) {
-	// Implements EIP-2537 G1Mul precompile.
+	// Implements EIP-2539 G1Mul precompile.
 	// > G1 multiplication call expects `160` bytes as an input that is interpreted as byte concatenation of encoding of G1 point (`128` bytes) and encoding of a scalar value (`32` bytes).
 	// > Output is an encoding of multiplication operation result - single G1 point (`128` bytes).
 	if len(input) != 160 {
@@ -1067,7 +1067,7 @@ func (c *bls12377G1Mul) Run(input []byte) ([]byte, error) {
 	return g.EncodePoint(r), nil
 }
 
-// bls12377G1MultiExp implements EIP-2537 G1MultiExp precompile.
+// bls12377G1MultiExp implements EIP-2539 G1MultiExp precompile.
 type bls12377G1MultiExp struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
@@ -1090,7 +1090,7 @@ func (c *bls12377G1MultiExp) RequiredGas(input []byte) uint64 {
 }
 
 func (c *bls12377G1MultiExp) Run(input []byte) ([]byte, error) {
-	// Implements EIP-2537 G1MultiExp precompile.
+	// Implements EIP-2539 G1MultiExp precompile.
 	// G1 multiplication call expects `160*k` bytes as an input that is interpreted as byte concatenation of `k` slices each of them being a byte concatenation of encoding of G1 point (`128` bytes) and encoding of a scalar value (`32` bytes).
 	// Output is an encoding of multiexponentiation operation result - single G1 point (`128` bytes).
 	k := len(input) / 160
@@ -1124,7 +1124,7 @@ func (c *bls12377G1MultiExp) Run(input []byte) ([]byte, error) {
 	return g.EncodePoint(r), nil
 }
 
-// bls12377G2Add implements EIP-2537 G2Add precompile.
+// bls12377G2Add implements EIP-2539 G2Add precompile.
 type bls12377G2Add struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
@@ -1133,7 +1133,7 @@ func (c *bls12377G2Add) RequiredGas(input []byte) uint64 {
 }
 
 func (c *bls12377G2Add) Run(input []byte) ([]byte, error) {
-	// Implements EIP-2537 G2Add precompile.
+	// Implements EIP-2539 G2Add precompile.
 	// > G2 addition call expects `512` bytes as an input that is interpreted as byte concatenation of two G2 points (`256` bytes each).
 	// > Output is an encoding of addition operation result - single G2 point (`256` bytes).
 	if len(input) != 512 {
@@ -1162,7 +1162,7 @@ func (c *bls12377G2Add) Run(input []byte) ([]byte, error) {
 	return g.EncodePoint(r), nil
 }
 
-// bls12377G2Mul implements EIP-2537 G2Mul precompile.
+// bls12377G2Mul implements EIP-2539 G2Mul precompile.
 type bls12377G2Mul struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
@@ -1171,7 +1171,7 @@ func (c *bls12377G2Mul) RequiredGas(input []byte) uint64 {
 }
 
 func (c *bls12377G2Mul) Run(input []byte) ([]byte, error) {
-	// Implements EIP-2537 G2MUL precompile logic.
+	// Implements EIP-2539 G2MUL precompile logic.
 	// > G2 multiplication call expects `288` bytes as an input that is interpreted as byte concatenation of encoding of G2 point (`256` bytes) and encoding of a scalar value (`32` bytes).
 	// > Output is an encoding of multiplication operation result - single G2 point (`256` bytes).
 	if len(input) != 288 {
@@ -1198,7 +1198,7 @@ func (c *bls12377G2Mul) Run(input []byte) ([]byte, error) {
 	return g.EncodePoint(r), nil
 }
 
-// bls12377G2MultiExp implements EIP-2537 G2MultiExp precompile.
+// bls12377G2MultiExp implements EIP-2539 G2MultiExp precompile.
 type bls12377G2MultiExp struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
@@ -1221,7 +1221,7 @@ func (c *bls12377G2MultiExp) RequiredGas(input []byte) uint64 {
 }
 
 func (c *bls12377G2MultiExp) Run(input []byte) ([]byte, error) {
-	// Implements EIP-2537 G2MultiExp precompile logic
+	// Implements EIP-2539 G2MultiExp precompile logic
 	// > G2 multiplication call expects `288*k` bytes as an input that is interpreted as byte concatenation of `k` slices each of them being a byte concatenation of encoding of G2 point (`256` bytes) and encoding of a scalar value (`32` bytes).
 	// > Output is an encoding of multiexponentiation operation result - single G2 point (`256` bytes).
 	k := len(input) / 288
@@ -1255,7 +1255,7 @@ func (c *bls12377G2MultiExp) Run(input []byte) ([]byte, error) {
 	return g.EncodePoint(r), nil
 }
 
-// bls12377Pairing implements EIP-2537 Pairing precompile.
+// bls12377Pairing implements EIP-2539 Pairing precompile.
 type bls12377Pairing struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
@@ -1264,7 +1264,7 @@ func (c *bls12377Pairing) RequiredGas(input []byte) uint64 {
 }
 
 func (c *bls12377Pairing) Run(input []byte) ([]byte, error) {
-	// Implements EIP-2537 Pairing precompile logic.
+	// Implements EIP-2539 Pairing precompile logic.
 	// > Pairing call expects `384*k` bytes as an inputs that is interpreted as byte concatenation of `k` slices. Each slice has the following structure:
 	// > - `128` bytes of G1 point encoding
 	// > - `256` bytes of G2 point encoding
