@@ -35,13 +35,6 @@ type precompiledTest struct {
 	NoBenchmark     bool // Benchmark primarily the worst-cases
 }
 
-type precompiledTestFromJson struct {
-	Input, Expected string
-	Name            string
-	NoBenchmark     bool // Benchmark primarily the worst-cases
-	ErrorExpected   bool
-}
-
 // precompiledFailureTest defines the input/error pairs for precompiled
 // contract failure tests.
 type precompiledFailureTest struct {
@@ -373,7 +366,6 @@ func BenchmarkPrecompiledBLS12381G2MultiExpWorstCase(b *testing.B) {
 	}
 	benchmarkPrecompiled("0f", testcase, b)
 }
-
 
 func TestPrecompiledBLS12377G1Add(t *testing.T) {
 	testJson("bls12377G1Add_matter", "f3", t)

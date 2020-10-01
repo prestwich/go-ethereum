@@ -26,8 +26,8 @@ import (
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/crypto/blake2b"
-	"github.com/ethereum/go-ethereum/crypto/bls12381"
 	"github.com/ethereum/go-ethereum/crypto/bls12377"
+	"github.com/ethereum/go-ethereum/crypto/bls12381"
 	"github.com/ethereum/go-ethereum/crypto/bn256"
 	"github.com/ethereum/go-ethereum/params"
 
@@ -1044,7 +1044,7 @@ func (c *bls12377G1Mul) Run(input []byte) ([]byte, error) {
 	// > G1 multiplication call expects `160` bytes as an input that is interpreted as byte concatenation of encoding of G1 point (`128` bytes) and encoding of a scalar value (`32` bytes).
 	// > Output is an encoding of multiplication operation result - single G1 point (`128` bytes).
 	if len(input) != 160 {
-		return nil,errBLS12377InvalidInputLength
+		return nil, errBLS12377InvalidInputLength
 	}
 	var err error
 	var p0 *bls12377.PointG1
@@ -1137,7 +1137,7 @@ func (c *bls12377G2Add) Run(input []byte) ([]byte, error) {
 	// > G2 addition call expects `512` bytes as an input that is interpreted as byte concatenation of two G2 points (`256` bytes each).
 	// > Output is an encoding of addition operation result - single G2 point (`256` bytes).
 	if len(input) != 512 {
-		return nil,errBLS12377InvalidInputLength
+		return nil, errBLS12377InvalidInputLength
 	}
 	var err error
 	var p0, p1 *bls12377.PointG2
