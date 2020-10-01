@@ -236,8 +236,8 @@ func (w *wizard) manageGenesis() {
 		w.conf.Genesis.Config.IstanbulBlock = w.readDefaultBigInt(w.conf.Genesis.Config.IstanbulBlock)
 
 		fmt.Println()
-		fmt.Printf("Which block should YOLOv2 come into effect? (default = %v)\n", w.conf.Genesis.Config.YoloV2Block)
-		w.conf.Genesis.Config.YoloV2Block = w.readDefaultBigInt(w.conf.Genesis.Config.YoloV2Block)
+		fmt.Printf("Which block should Espresso come into effect? (default = %v)\n", w.conf.Genesis.Config.EspressoBlock)
+		w.conf.Genesis.Config.EspressoBlock = w.readDefaultBigInt(w.conf.Genesis.Config.EspressoBlock)
 
 		out, _ := json.MarshalIndent(w.conf.Genesis.Config, "", "  ")
 		fmt.Printf("Chain configuration updated:\n\n%s\n", out)

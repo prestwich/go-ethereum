@@ -579,8 +579,8 @@ func (api *PrivateDebugAPI) standardTraceBlockToFile(ctx context.Context, block 
 		chainConfigCopy := new(params.ChainConfig)
 		*chainConfigCopy = *chainConfig
 		chainConfig = chainConfigCopy
-		if yolov2 := config.Overrides.YoloV2Block; yolov2 != nil {
-			chainConfig.YoloV2Block = yolov2
+		if espresso := config.Overrides.EspressoBlock; espresso != nil {
+			chainConfig.EspressoBlock = espresso
 			canon = false
 		}
 	}

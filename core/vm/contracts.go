@@ -79,9 +79,9 @@ var PrecompiledContractsIstanbul = map[common.Address]PrecompiledContract{
 	common.BytesToAddress([]byte{9}): &blake2F{},
 }
 
-// PrecompiledContractsYoloV2 contains the default set of pre-compiled Ethereum
-// contracts used in the Yolo v2 test release.
-var PrecompiledContractsYoloV2 = map[common.Address]PrecompiledContract{
+// PrecompiledContractsEspresso contains the default set of pre-compiled Ethereum
+// contracts used in the Espresso test release.
+var PrecompiledContractsEspresso = map[common.Address]PrecompiledContract{
 	common.BytesToAddress([]byte{1}):  &ecrecover{},
 	common.BytesToAddress([]byte{2}):  &sha256hash{},
 	common.BytesToAddress([]byte{3}):  &ripemd160hash{},
@@ -109,7 +109,7 @@ var PrecompiledContractsYoloV2 = map[common.Address]PrecompiledContract{
 	common.BytesToAddress([]byte{25}): &bls12377Pairing{},
 }
 
-var PrecompiledAddressesYoloV2 []common.Address
+var PrecompiledAddressesEspresso []common.Address
 var PrecompiledAddressesIstanbul []common.Address
 var PrecompiledAddressesByzantium []common.Address
 var PrecompiledAddressesHomestead []common.Address
@@ -124,8 +124,8 @@ func init() {
 	for k := range PrecompiledContractsIstanbul {
 		PrecompiledAddressesIstanbul = append(PrecompiledAddressesIstanbul, k)
 	}
-	for k := range PrecompiledContractsYoloV2 {
-		PrecompiledAddressesYoloV2 = append(PrecompiledAddressesYoloV2, k)
+	for k := range PrecompiledContractsEspresso {
+		PrecompiledAddressesEspresso = append(PrecompiledAddressesEspresso, k)
 	}
 }
 
