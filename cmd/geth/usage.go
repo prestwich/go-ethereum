@@ -42,7 +42,7 @@ var AppHelpFlagGroups = []flags.FlagGroup{
 			utils.NetworkIdFlag,
 			utils.GoerliFlag,
 			utils.RinkebyFlag,
-			utils.YoloV2Flag,
+			utils.EspressoFlag,
 			utils.RopstenFlag,
 			utils.SyncModeFlag,
 			utils.ExitWhenSyncedFlag,

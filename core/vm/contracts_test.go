@@ -43,7 +43,7 @@ type precompiledFailureTest struct {
 	Name          string
 }
 
-var allPrecompiles = PrecompiledContractsYoloV2
+var allPrecompiles = PrecompiledContractsEspresso
 
 // EIP-152 test vectors
 var blake2FMalformedInputTests = []precompiledFailureTest{

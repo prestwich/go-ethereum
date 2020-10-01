@@ -96,7 +96,7 @@ func ApplyTransaction(config *params.ChainConfig, bc ChainContext, author *commo
 	// about the transaction and calling mechanisms.
 	vmenv := vm.NewEVM(context, statedb, config, cfg)
 
-	if config.IsYoloV2(header.Number) {
+	if config.IsEspresso(header.Number) {
 		statedb.AddAddrToAccessList(msg.From())
 		if dst := msg.To(); dst != nil {
 			statedb.AddAddrToAccessList(*dst)
