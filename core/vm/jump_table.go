@@ -56,7 +56,7 @@ var (
 	byzantiumInstructionSet        = newByzantiumInstructionSet()
 	constantinopleInstructionSet   = newConstantinopleInstructionSet()
 	istanbulInstructionSet         = newIstanbulInstructionSet()
-	espressoInstructionSet           = newEspressoInstructionSet()
+	espressoInstructionSet         = newEspressoInstructionSet()
 )
 
 // JumpTable contains the EVM opcodes supported at a given fork.
