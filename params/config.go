@@ -32,7 +32,7 @@ var (
 	RinkebyGenesisHash = common.HexToHash("0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177")
 	GoerliGenesisHash  = common.HexToHash("0xbf7e331f7f7c1dd2e05159666b3bf8bc7a8a3a9eb1d518969eab529dd9b88c1a")
 	// TODO: update with yolov2 values
-	EspressoGenesisHash = common.HexToHash("0xc3fd235071f24f93865b0850bd2a2119b30f7224d18a0e34c7bbf549ad7e3d36")
+	EspressoGenesisHash = common.HexToHash("0x6bd7e3eec6e7677cdf3857d71b27239ecf062e68cb6fb6f64200ffd277b58712")
 )
 
 // TrustedCheckpoints associates each known checkpoint with the genesis hash of
@@ -216,7 +216,7 @@ var (
 
 	// EspressoChainConfig contains the chain parameters to run a node on the YOLOv2 test network.
 	EspressoChainConfig = &ChainConfig{
-		ChainID:             big.NewInt(133519467574833),
+		ChainID:             big.NewInt(25894),
 		HomesteadBlock:      big.NewInt(0),
 		DAOForkBlock:        nil,
 		DAOForkSupport:      true,
@@ -228,11 +228,8 @@ var (
 		PetersburgBlock:     big.NewInt(0),
 		IstanbulBlock:       big.NewInt(0),
 		MuirGlacierBlock:    nil,
-		EspressoBlock:         big.NewInt(0),
-		Clique: &CliqueConfig{
-			Period: 15,
-			Epoch:  30000,
-		},
+		EspressoBlock:       big.NewInt(0),
+		Ethash:              new(EthashConfig),
 	}
 
 	// AllEthashProtocolChanges contains every protocol change (EIPs) introduced

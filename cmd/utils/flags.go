@@ -804,7 +804,7 @@ func setBootstrapNodes(ctx *cli.Context, cfg *p2p.Config) {
 	case ctx.GlobalBool(GoerliFlag.Name):
 		urls = params.GoerliBootnodes
 	case ctx.GlobalBool(EspressoFlag.Name):
-		urls = params.YoloV1Bootnodes
+		urls = params.EspressoBootnodes
 	case cfg.BootstrapNodes != nil:
 		return // already set, don't apply defaults.
 	}
@@ -1605,7 +1605,7 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *eth.Config) {
 		SetDNSDiscoveryDefaults(cfg, params.GoerliGenesisHash)
 	case ctx.GlobalBool(EspressoFlag.Name):
 		if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
-			cfg.NetworkId = 133519467574833 // yolo-v2 TODO: new network id
+			cfg.NetworkId = 25894 // yolo-v2 TODO: new network id
 		}
 		cfg.Genesis = core.DefaultEspressoGenesisBlock()
 	case ctx.GlobalBool(DeveloperFlag.Name):
