@@ -385,10 +385,10 @@ func DefaultEspressoGenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.EspressoChainConfig,
 		Timestamp:  0x5f7ba87a,
-		ExtraData:  hexutil.MustDecode("0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
+		ExtraData:  hexutil.MustDecode("0x0000000000000000000000000000000000000000000000000000000000000000"),
 		GasLimit:   0x47b760,
-		Difficulty: big.NewInt(1),
-		Alloc:      decodePrealloc(yoloV1AllocData),
+		Difficulty: big.NewInt(524288),
+		Alloc:      decodePrealloc(espressoAllocData),
 	}
 }
 

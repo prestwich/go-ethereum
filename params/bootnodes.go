@@ -70,7 +70,7 @@ var YoloV1Bootnodes = []string{
 }
 
 var EspressoBootnodes = []string{
-	"enode://ab5ca7634b16bffe86844786fab9bc9af0cc280b46e870bf7edc149197b4101e32d1706e37c8fcd890a67dea27ff8ed8ca9b99409d1e34598776b02aaa69e945@3.215.22.230:30303",
+	"enode://e0d1eafbecd590bc8c46b6ec02c1e50daccf58eefc9b1e8b8b3e32ec83438e8a6499a485f8007247472a73441619f053dbec5f33eff8565e2464868a99a42b5c@18.206.81.58:30305",
 }
 
 const dnsPrefix = "enrtree://AKA3AM6LPBYEUDMVNU3BSVQJ5AD45Y7YPOHJLEF6W26QOE4VTUDPE@"
