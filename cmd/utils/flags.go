@@ -840,7 +840,7 @@ func setBootstrapNodesV5(ctx *cli.Context, cfg *p2p.Config) {
 	case ctx.GlobalBool(GoerliFlag.Name):
 		urls = params.GoerliBootnodes
 	case ctx.GlobalBool(EspressoFlag.Name):
-		urls = params.YoloV1Bootnodes
+		urls = params.EspressoBootnodes
 	case cfg.BootstrapNodesV5 != nil:
 		return // already set, don't apply defaults.
 	}
