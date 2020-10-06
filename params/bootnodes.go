@@ -69,6 +69,11 @@ var YoloV1Bootnodes = []string{
 	"enode://9e1096aa59862a6f164994cb5cb16f5124d6c992cdbf4535ff7dea43ea1512afe5448dca9df1b7ab0726129603f1a3336b631e4d7a1a44c94daddd03241587f9@35.178.210.161:30303",
 }
 
+var EspressoBootnodes = []string{
+	"enode://e0d1eafbecd590bc8c46b6ec02c1e50daccf58eefc9b1e8b8b3e32ec83438e8a6499a485f8007247472a73441619f053dbec5f33eff8565e2464868a99a42b5c@18.206.81.58:30305",
+}
+
+
 const dnsPrefix = "enrtree://AKA3AM6LPBYEUDMVNU3BSVQJ5AD45Y7YPOHJLEF6W26QOE4VTUDPE@"
 
 // KnownDNSNetwork returns the address of a public DNS-based node list for the given

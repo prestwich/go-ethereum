@@ -384,11 +384,11 @@ func DefaultEspressoGenesisBlock() *Genesis {
 	// TODO: Update with yolov2 values + regenerate alloc data
 	return &Genesis{
 		Config:     params.EspressoChainConfig,
-		Timestamp:  0x5ed754f1,
-		ExtraData:  hexutil.MustDecode("0x00000000000000000000000000000000000000000000000000000000000000008a37866fd3627c9205a37c8685666f32ec07bb1b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
+		Timestamp:  0x5f7ba87a,
+		ExtraData:  hexutil.MustDecode("0x0000000000000000000000000000000000000000000000000000000000000000"),
 		GasLimit:   0x47b760,
-		Difficulty: big.NewInt(1),
-		Alloc:      decodePrealloc(yoloV1AllocData),
+		Difficulty: big.NewInt(524288),
+		Alloc:      decodePrealloc(espressoAllocData),
 	}
 }
 
