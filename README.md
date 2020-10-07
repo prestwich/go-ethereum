@@ -13,6 +13,15 @@ $ ./build/bin/geth init --datadir ./espresso-data espresso.json
 $ ./build/bin/geth --datadir ./espresso-data espresso.json --networkid 25894 --bootnodes enode://ab5ca7634b16bffe86844786fab9bc9af0cc280b46e870bf7edc149197b4101e32d1706e37c8fcd890a67dea27ff8ed8ca9b99409d1e34598776b02aaa69e945@3.215.22.230:30303
 ```
 
+### Troubleshooting
+
+- If your node doesn't find a peer, 
+    - try adding the bootnode directly from the geth console
+    - `$ geth attach --datadir ./espresso-data`
+    - `> admin.addPeer(enode://ab5ca7634b16bffe86844786fab9bc9af0cc280b46e870bf7edc149197b4101e32d1706e37c8fcd890a67dea27ff8ed8ca9b99409d1e34598776b02aaa69e945@3.215.22.230:30303)`
+- If you want to verify the whole chain history:
+    - use `--syncmode full`
+
 #### Credit
 
 Espresso was brewed quickly and under high pressure at cLabs. @emag3m wrote the precompile integration, and @YazzyYaz made the testnet setup and config.
