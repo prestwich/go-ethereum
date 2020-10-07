@@ -1,8 +1,18 @@
 ## Espresso - Ethereum testnet
 
 Espresso is an ephemeral Ethereum testnet implementing EIPs 2537, 2539, and 
-2929. We pulled Espresso to test client EIP integration. It should be considered
+2929. We pulled Espresso to test client EIP integration in a low-stakes environment.
+
+Espresso was built off of the in-progress Yolov2 branch, and may experience 
+consenus failures or other issues. It should be considered
 **unstable** and likely to be restarted at any time.
+
+- [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537)
+    - Precompiles available from addresses 0x0a through 0x12 (decimal 10-18)
+- [EIP-2539](https://eips.ethereum.org/EIPS/eip-2539)
+    - Precompiles available from addresses 0x13 through 0x19 (decimal 19-25)
+- [EIP-2929](https://eips.ethereum.org/EIPS/eip-2929)
+
 
 ### Joining Espresso
 
@@ -15,8 +25,7 @@ $ ./build/bin/geth --datadir ./espresso-data espresso.json --networkid 25894 --b
 
 ### Troubleshooting
 
-- If your node doesn't find a peer, 
-    - try adding the bootnode directly from the geth console
+- If your node doesn't find a peer try adding the bootnode directly from the geth console
     - `$ geth attach --datadir ./espresso-data`
     - `> admin.addPeer(enode://ab5ca7634b16bffe86844786fab9bc9af0cc280b46e870bf7edc149197b4101e32d1706e37c8fcd890a67dea27ff8ed8ca9b99409d1e34598776b02aaa69e945@3.215.22.230:30303)`
 - If you want to verify the whole chain history:
@@ -24,8 +33,9 @@ $ ./build/bin/geth --datadir ./espresso-data espresso.json --networkid 25894 --b
 
 #### Credit
 
-Espresso was brewed quickly and under high pressure at cLabs. @emag3m wrote the precompile integration, and @YazzyYaz made the testnet setup and config.
-
+Espresso was brewed quickly and under high pressure at cLabs. @emag3m wrote the 
+precompile integration, and @YazzyYaz made the testnet setup and config. 
+@prestwich made coffee.
 
 ## Go Ethereum
 
