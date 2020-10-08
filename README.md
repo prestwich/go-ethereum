@@ -20,14 +20,14 @@ consenus failures or other issues. It should be considered
 $ make
 $ mkdir espresso-data
 $ ./build/bin/geth init --datadir ./espresso-data espresso.json
-$ ./build/bin/geth --datadir ./espresso-data espresso.json --networkid 25894 --bootnodes enode://ab5ca7634b16bffe86844786fab9bc9af0cc280b46e870bf7edc149197b4101e32d1706e37c8fcd890a67dea27ff8ed8ca9b99409d1e34598776b02aaa69e945@3.215.22.230:30303
+$ ./build/bin/geth --datadir ./espresso-data espresso.json --networkid 25894 --bootnodes enode://9a0bfda372a03928a2e21459546578deed03ed9d861f517842032e765980d8d34853a02707086f813e1d53bbcd6d55709877a8c283c5aec64182de78021459e1@3.215.22.230:30305
 ```
 
 ### Troubleshooting
 
 - If your node doesn't find a peer try adding the bootnode directly from the geth console
     - `$ geth attach --datadir ./espresso-data`
-    - `> admin.addPeer(enode://ab5ca7634b16bffe86844786fab9bc9af0cc280b46e870bf7edc149197b4101e32d1706e37c8fcd890a67dea27ff8ed8ca9b99409d1e34598776b02aaa69e945@3.215.22.230:30303)`
+    - `> admin.addPeer(enode://9a0bfda372a03928a2e21459546578deed03ed9d861f517842032e765980d8d34853a02707086f813e1d53bbcd6d55709877a8c283c5aec64182de78021459e1@3.215.22.230:30305)`
 - If you want to verify the whole chain history:
     - use `--syncmode full`
 
