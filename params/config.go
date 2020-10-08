@@ -216,7 +216,7 @@ var (
 
 	// EspressoChainConfig contains the chain parameters to run a node on the YOLOv2 test network.
 	EspressoChainConfig = &ChainConfig{
-		ChainID:             big.NewInt(133519467574833),
+		ChainID:             big.NewInt(25894),
 		HomesteadBlock:      big.NewInt(0),
 		DAOForkBlock:        nil,
 		DAOForkSupport:      true,
